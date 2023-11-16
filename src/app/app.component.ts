@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
   filtrar() {
 
     if(this.filtroIconos==""){
-      this.datanombresTemp=this.datanombres;
+      this.datanombres=this.datanombresTemp;
     }else{
       this.datanombres=this.datanombresTemp.filter(value => value.nombre.includes(this.filtroIconos));
     }
