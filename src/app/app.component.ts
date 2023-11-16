@@ -13,10 +13,12 @@ export class AppComponent implements OnInit{
    constructor(private http:HttpClient) {
    }
    datanombres:any[]=[];
+   datanombresTemp:any[]=[];
 
    getNombres(){
      this.http.get("/assets/archivos.json").subscribe(value => {
        this.datanombres=value as any[];
+       this.datanombresTemp=value as any[];
      })
    }
 
@@ -28,13 +30,26 @@ export class AppComponent implements OnInit{
   color: any="#0854A0";
   fondo: any="#F0F4F8";
   seleccionarNombre(item: any) {
-    console.log(item)
-    this.iconSelected=item.target.value;
+
+    this.iconSelected=item.nombre;
   }
 
   cambiarTama($event: any) {
 
     this.fontSize=$event.target.value+"px";
+
+  }
+  filtroIconos:String="";
+
+  filtrar() {
+
+    if(this.filtroIconos==""){
+      this.datanombresTemp=this.datanombres;
+    }else{
+      this.datanombres=this.datanombresTemp.filter(value => value.nombre.includes(this.filtroIconos));
+    }
+
+
 
   }
 }

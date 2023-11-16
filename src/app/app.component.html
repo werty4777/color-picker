@@ -1,4 +1,4 @@
-<h1>Elije un icono</h1>
+<h1>Iconos</h1>
 
 <div class="caja-icono" [ngStyle]="{background: fondo}" >
   <ui5-icon name="{{iconSelected}}"  [ngStyle]="{width:fontSize,height:fontSize,color:color}"></ui5-icon>
@@ -6,10 +6,44 @@
 
 <br>
 <br><br>
+<h1>Buscar</h1>
+<input type="text" [(ngModel)]="filtroIconos" (change)="filtrar()" (keyup)="filtrar()" >
 
-<select name="" id="" (change)="seleccionarNombre($event)">
-  <option  *ngFor="let item of datanombres" [value]="item.nombre">{{item.nombre}}</option>
-</select>
+<br><br><br><br>
+
+
+
+
+
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+<table>
+
+  <tr>
+    <th style="width:200px">Nombre</th>
+    <th>Icono</th>
+  </tr>
+
+
+
+    <tr *cdkVirtualFor="let item of datanombres" class="example-item" >
+
+   <ng-container>
+     <td style="width:200px">{{item.nombre}}</td>
+     <td style="cursor:pointer" (click)="seleccionarNombre(item)">
+       <div class="caja-icono" [ngStyle]="{background: fondo}" >
+         <ui5-icon name="{{item.nombre}}"  [ngStyle]="{width:fontSize,height:fontSize,color:color}"></ui5-icon>
+       </div>
+     </td>
+   </ng-container>
+
+
+    </tr>
+
+
+
+
+</table>
+</cdk-virtual-scroll-viewport>
 
 <h1>Tamaño del icono</h1>
 <input type="number" (change)="cambiarTama($event)"  >

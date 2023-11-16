@@ -6,3 +6,13 @@
   padding-bottom: 25px;
   padding-left: 100px;
 }
+.example-viewport {
+  height: 250px;
+  width: 55vw;
+  border: 1px solid black;
+  margin-left: 100px;
+}
+
+.example-item {
+  height: 50px;
+}
