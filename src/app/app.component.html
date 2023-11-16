@@ -1,0 +1,24 @@
+<h1>Elije un icono</h1>
+
+<div class="caja-icono" [ngStyle]="{background: fondo}" >
+  <ui5-icon name="{{iconSelected}}"  [ngStyle]="{width:fontSize,height:fontSize,color:color}"></ui5-icon>
+</div>
+
+<br>
+<br><br>
+
+<select name="" id="" (change)="seleccionarNombre($event)">
+  <option  *ngFor="let item of datanombres" [value]="item.nombre">{{item.nombre}}</option>
+</select>
+
+<h1>Tamaño del icono</h1>
+<input type="number" (change)="cambiarTama($event)"  >
+
+
+<h1>Color Icono</h1>
+
+<input type="color" id="icono" name="head"  [(ngModel)]="color" />
+<h1>Color Fondo</h1>
+<input type="color" id="fondo" name="head"  [(ngModel)]="fondo" />
+
+
